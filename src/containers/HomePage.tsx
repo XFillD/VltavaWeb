@@ -3,11 +3,15 @@ import { motion, useAnimation } from "framer-motion";
 
 function HomePage() {
   const controls = useAnimation();
+  const controls2 = useAnimation();
 
   useEffect(() => {
     const updateScroll = () => {
       if (window.scrollY > 200) {
         controls.start({ opacity: 1, y: 0, transition: { duration: 1 } });
+      }
+      if (window.scrollY > 300) {
+        controls2.start({ opacity: 1, y: 0, transition: { duration: 1 } });
       }
     };
     window.addEventListener("scroll", updateScroll);
@@ -16,18 +20,20 @@ function HomePage() {
 
   return (
     <div className="flex flex-col items-center space-y-16">
-      <div className="mt-16 text-2xl font-bold">Welcome to Our Restaurant</div>
+      <div className="mt-16 text-2xl font-bold h-96">
+        Welcome to Our Restaurant
+      </div>
       <motion.div
-        className="text-xl"
-        initial={{ opacity: 0, y: 100 }}
+        className="text-xl h-96"
+        initial={{ opacity: 0, y: 200 }}
         animate={controls}
       >
         Discover Our Menu
       </motion.div>
       <motion.div
-        className="text-xl"
-        initial={{ opacity: 0, y: 100 }}
-        animate={controls}
+        className="text-xl h-96"
+        initial={{ opacity: 0, y: 300 }}
+        animate={controls2}
       >
         Book Your Table Now
       </motion.div>
